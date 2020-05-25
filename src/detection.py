@@ -2,11 +2,12 @@ import os
 import numpy as np
 import cv2
 
-cascPath = r'C:\Users\cliff\Documents\Work\Projects\face-detection-opencv\project\models\haarcascade_frontalface_default.xml'
+cascPath = os.path.abspath(
+    './models/haarcascade_frontalface_default.xml').replace('\\', '/')
 
 
-def test_run():
-    imgPath = r'C:\Users\cliff\Documents\Work\Projects\face-detection-opencv\project\images\face1.jpg'
+def main():
+    imgPath = os.path.abspath('./images/face1.jpg').replace('\\', '/')
 
     face_cascade = cv2.CascadeClassifier(cascPath)
 
@@ -40,3 +41,7 @@ def detect_face(byteString):
         roi_color = img[y:y+h, x:x+w]
 
     return img
+
+
+if __name__ == '__main__':
+    main()
